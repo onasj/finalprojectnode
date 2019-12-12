@@ -3,14 +3,14 @@ const router = express.Router();
 const firebase = require('firebase');
 
 const firebaseConfig = {
-	apiKey: "AIzaSyARibOmTUEEuhi4GFiPrEFk0Idn2yxi0iM",
-	authDomain: "exercise-four-a90d9.firebaseapp.com",
-	databaseURL: "https://exercise-four-a90d9.firebaseio.com",
-	projectId: "exercise-four-a90d9",
-	storageBucket: "exercise-four-a90d9.appspot.com",
-	messagingSenderId: "513398951557",
-	appId: "1:513398951557:web:828929a9b573636a2263ec",
-	measurementId: "G-D2G9FVS8HW"
+	apiKey: "AIzaSyDwgee5MWtC208j18BZtMrI9m3lINIwypE",
+	authDomain: "dynamic-web-final-a8d2a.firebaseapp.com",
+	databaseURL: "https://dynamic-web-final-a8d2a.firebaseio.com",
+	projectId: "dynamic-web-final-a8d2a",
+	storageBucket: "dynamic-web-final-a8d2a.appspot.com",
+	messagingSenderId: "715674027548",
+	appId: "1:715674027548:web:ef34c9a9703e539b1541d9",
+	measurementId: "G-T6M3XC2PV4"
 };
 
 if (!firebase.apps.length) {

@@ -25,7 +25,7 @@ var getOptions = {
 
 router.get("/:id", (req, res) => {
 	let queryId = req.params.id;
-	let docRef = db.collection("blog-posts").doc(queryId);
+	let docRef = db.collection("posts").doc(queryId);
 	docRef
 	.get(getOptions) 
 	.then(doc => res.send(doc.data()))

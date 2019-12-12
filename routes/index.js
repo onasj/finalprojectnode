@@ -19,13 +19,13 @@ const db = firestoreDatabase.firestore();
 
 let posts = [];
 
-db.collection('blog-posts').get()
+db.collection('posts').get()
 	.then(
 		blogPosts => {
 			blogPosts.forEach(post => {
 				posts.push(post.data());
 			});
-			console.log('blogPosts', blogPosts);
+			console.log('Posts', blogPosts);
 		}
 	)
 	.catch(err => {

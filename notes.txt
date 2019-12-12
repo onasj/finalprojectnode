@@ -1,0 +1,181 @@
+//routes
+
+//index.js
+
+const express = require('express');
+const router = express.Router();
+const firebase = require('firebase');
+
+const firebaseConfig = {
+	apiKey: "AIzaSyARibOmTUEEuhi4GFiPrEFk0Idn2yxi0iM",
+	authDomain: "exercise-four-a90d9.firebaseapp.com",
+	databaseURL: "https://exercise-four-a90d9.firebaseio.com",
+	projectId: "exercise-four-a90d9",
+	storageBucket: "exercise-four-a90d9.appspot.com",
+	messagingSenderId: "513398951557",
+	appId: "1:513398951557:web:828929a9b573636a2263ec",
+	measurementId: "G-D2G9FVS8HW"
+}
+
+const firestoreDatabase = firebase.initializeApp(firebaseConfig);
+const db = firestoreDatabase.firestore();
+
+let posts = [];
+db.collection('blog-posts').get()
+	.then(
+		blogPost => {
+					blogPost.forEach(docs =>)
+			post = blogPosts.data();
+			console.log('blogPosts', blogPosts);
+		}
+	)
+	.catch(err => {
+		console.log('error', err);
+	})
+
+router.get('/'), (req, res) => {
+	res.send(posts);
+})
+
+module.exports = router;
+
+//post.js
+~
+//app.js
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 4000;
+//routes
+const indexRoute = require('./routes/index.js');
+const postRoute = require('./routes/post.js');
+//static file serving
+app.user('/static', express.static('public'));
+
+app.listen(port,() => console.log('yeah'))
+
+~
+npm install --save firebase
+
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
+
+// TODO: Replace the following with your app's Firebase project configuration
+var firebaseConfig = {
+  // ...
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Getting a single post 
+
+const express = require('express');
+const router = express.Router();
+const firebase = require('firebase');
+
+const firebaseConfig = {
+	apiKey: "AIzaSyARibOmTUEEuhi4GFiPrEFk0Idn2yxi0iM",
+	authDomain: "exercise-four-a90d9.firebaseapp.com",
+	databaseURL: "https://exercise-four-a90d9.firebaseio.com",
+	projectId: "exercise-four-a90d9",
+	// storageBucket: "exercise-four-a90d9.appspot.com",
+	// messagingSenderId: "513398951557",
+	// appId: "1:513398951557:web:828929a9b573636a2263ec",
+	// measurementId: "G-D2G9FVS8HW"
+};
+
+if (!firebase.apps.length) {
+	firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.firestore();
+
+router.get("/:id", (req, res) => {
+	let queryId = req.params.id;
+	let docRef = db.collection("blog-posts").doc(queryId);
+	docRef
+	.get('default') 
+	.then(doc => res.send(doc.data()))
+	.catch(error => res.send(error));
+})
+
+module.exports = router;
+
+//default||server||cache
+
+//routes
+
+const express = require('express');
+const router = express.Router();
+const firebase = require('firebase');
+
+const firebaseConfig = {
+	apiKey: "AIzaSyARibOmTUEEuhi4GFiPrEFk0Idn2yxi0iM",
+	authDomain: "exercise-four-a90d9.firebaseapp.com",
+	databaseURL: "https://exercise-four-a90d9.firebaseio.com",
+	projectId: "exercise-four-a90d9",
+	// storageBucket: "exercise-four-a90d9.appspot.com",
+	// messagingSenderId: "513398951557",
+	// appId: "1:513398951557:web:828929a9b573636a2263ec",
+	// measurementId: "G-D2G9FVS8HW"
+};
+
+if (!firebase.apps.length) {
+	firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.firestore();
+
+// set sample data to submit upon request
+const sampleData = {
+	title: 'Test',
+	text: 'Test Text',
+	author: 'James Ayres'
+}
+
+// Test Route
+
+router.get("/test", (req, res) =? {
+	try {
+		db.collection("blog-posts")
+		// Setting an ID for the text doc
+		.doc("test-doc")
+		.set(sampleData)
+		.then(function() {
+			res.send("Document successfully written!");
+		})
+		.catch(function(error) {
+			res.send("Error writing document: ", error);
+		});
+})
+
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/submit-form", (req,res) =>
+	res.sendFile("/public/form.html", { root: _dirname })
+);
+
+// Submit Data
+router.get("/", (req,res) => {
+	// localhost:4000/submit?title=title&text=text&author=authornamewhatever
+	let titleVal = req.query.title ? req.query.title : '';
+	let textVal = req.query.text ? req.query.text : '';
+	let authorVal = req.query.author ? req.query.author : '';
+	db.collection("blog-posts")
+	.add({
+		title: titleVal,
+		text: textVal,
+		author: authorVal
+	})
+	.then(ref => res.send(ref))
+	.catch(e => res.send(e));
+})
+
+module.exports = router;

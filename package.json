@@ -1,0 +1,28 @@
+{
+  "name": "dynamic-web-exercise-four",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^7.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onasj/Dynamic-Web-Exercise-Four.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onasj/Dynamic-Web-Exercise-Four/issues"
+  },
+  "homepage": "https://github.com/onasj/Dynamic-Web-Exercise-Four#readme",
+  "engines": {
+    "node": "10.16.3"
+  },
+  "description": ""
+}

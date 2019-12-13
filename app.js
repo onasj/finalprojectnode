@@ -10,7 +10,7 @@ const submitRoute = require('./routes/submit.js');
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRoute);
+app.use("/allpost", indexRoute);
 app.use("/post", postRoute);
 app.use("/submit", submitRoute);
 
